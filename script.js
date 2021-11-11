@@ -33,4 +33,27 @@ let shuffleOrder = () => {
       element.classList.remove('selected')
     })
   }
-};
+
+  let checkOrder = () => {
+    for(let in clickOrder) {
+      if(clickOrder[i] != order[i]) {
+        lose();
+        break;
+      }
+    }
+    if(clickedOrder.length == order.length) {
+      alert(`Score ${score}\nYou Win!!! Get Ready for the Next Level !!!`)
+      nextLevel();
+    }
+  }
+  let click = (color) => {
+    clickedOrder[clickedOrder.length] = color;
+    createColorElement(color).classList.add('selected');
+
+    setTimeout(() => {
+      createColorElement(color).classList.remove('selected');
+    })
+
+    checkOrder();
+  }
+}
